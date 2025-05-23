@@ -1332,6 +1332,7 @@ __metadata:
     prettier: "npm:^3.5.3"
     rollup: "npm:^4.41.0"
     ts-node: "npm:^10.9.2"
+    tslib: "npm:^2.8.1"
     typescript: "npm:^5.8.3"
     typescript-eslint: "npm:^8.32.1"
   languageName: unknown
@@ -5653,6 +5654,13 @@ __metadata:
     ts-node-transpile-only: dist/bin-transpile.js
     ts-script: dist/bin-script-deprecated.js
   checksum: 10/a91a15b3c9f76ac462f006fa88b6bfa528130dcfb849dd7ef7f9d640832ab681e235b8a2bc58ecde42f72851cc1d5d4e22c901b0c11aa51001ea1d395074b794
+  languageName: node
+  linkType: hard
+
+"tslib@npm:^2.8.1":
+  version: 2.8.1
+  resolution: "tslib@npm:2.8.1"
+  checksum: 10/3e2e043d5c2316461cb54e5c7fe02c30ef6dccb3384717ca22ae5c6b5bc95232a6241df19c622d9c73b809bea33b187f6dbc73030963e29950c2141bc32a79f7
   languageName: node
   linkType: hard
 
