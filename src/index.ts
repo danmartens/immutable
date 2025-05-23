@@ -1,0 +1,13 @@
+export { filter } from './filter';
+export { getIn } from './getIn';
+export { insert } from './insert';
+export { map } from './map';
+export { mapEntries } from './mapEntries';
+export { merge } from './merge';
+export { push } from './push';
+export { removeKeys } from './removeKeys';
+export { set } from './set';
+export { setIn } from './setIn';
+export { splice } from './splice';
+export { union } from './union';
+export { updateIn } from './updateIn';
