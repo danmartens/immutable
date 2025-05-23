@@ -1,10 +1,10 @@
-export function map<T, U>(
+export function compactMap<T, U>(
   target: T[],
   updater: (item: T, index: number) => U,
-): U[] {
+): NonNullable<U>[] {
   let modified = false;
 
-  const result: U[] = [];
+  const result: NonNullable<U>[] = [];
 
   let index = 0;
 
@@ -15,10 +15,12 @@ export function map<T, U>(
       modified = true;
     }
 
-    result.push(updated);
+    if (updated != null) {
+      result.push(updated);
+    }
 
     index++;
   }
 
-  return modified ? result : (target as unknown as U[]);
+  return modified ? result : (target as unknown as NonNullable<U>[]);
 }

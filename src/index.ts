@@ -1,3 +1,5 @@
+export { compact } from './compact';
+export { compactMap } from './compactMap';
 export { filter } from './filter';
 export { getIn } from './getIn';
 export { insert } from './insert';
