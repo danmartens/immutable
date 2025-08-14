@@ -1,9 +1,9 @@
-export const splice = <T>(
-  target: ReadonlyArray<T>,
+export function splice<T>(
+  target: T[],
   start: number,
   deleteCount?: number,
   ...items: Array<T>
-): ReadonlyArray<T> => {
+): T[] {
   if (deleteCount === 0 && items.length === 0) {
     return target;
   }
@@ -43,4 +43,4 @@ export const splice = <T>(
   }
 
   return result;
-};
+}

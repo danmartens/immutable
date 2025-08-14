@@ -1,7 +1,7 @@
-export const merge = <T extends Record<string, unknown>, S extends Partial<T>>(
+export function merge<T extends Record<string, unknown>, S extends Partial<T>>(
   target: T,
   source: S,
-): T => {
+): T {
   if (Object.keys(source).length === 0) {
     return target;
   }
@@ -21,4 +21,4 @@ export const merge = <T extends Record<string, unknown>, S extends Partial<T>>(
   }
 
   return target;
-};
+}

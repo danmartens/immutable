@@ -1,7 +1,4 @@
-export const union = <T>(
-  target: ReadonlyArray<T>,
-  source: ReadonlyArray<T>,
-): ReadonlyArray<T> => {
+export function union<T>(target: T[], source: T[]): T[] {
   if (target === source) {
     return target;
   }
@@ -11,4 +8,4 @@ export const union = <T>(
   }
 
   return Array.from(new Set([...target, ...source]));
-};
+}

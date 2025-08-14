@@ -1,6 +1,3 @@
-export const push = <T>(
-  target: ReadonlyArray<T>,
-  value: T,
-): ReadonlyArray<T> => {
+export function push<T>(target: T[], value: T): T[] {
   return [...target, value];
-};
+}
