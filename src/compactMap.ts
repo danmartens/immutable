@@ -1,7 +1,17 @@
 export function compactMap<T, U>(
   target: T[],
   updater: (item: T, index: number) => U,
-): NonNullable<U>[] {
+): NonNullable<U>[];
+
+export function compactMap<T, U>(
+  target: readonly T[],
+  updater: (item: T, index: number) => U,
+): readonly NonNullable<U>[];
+
+export function compactMap<T, U>(
+  target: T[] | readonly T[],
+  updater: (item: T, index: number) => U,
+): NonNullable<U>[] | readonly NonNullable<U>[] {
   let modified = false;
 
   const result: NonNullable<U>[] = [];

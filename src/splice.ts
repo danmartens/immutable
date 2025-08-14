@@ -2,8 +2,22 @@ export function splice<T>(
   target: T[],
   start: number,
   deleteCount?: number,
-  ...items: Array<T>
-): T[] {
+  ...items: T[]
+): T[];
+
+export function splice<T>(
+  target: readonly T[],
+  start: number,
+  deleteCount?: number,
+  ...items: T[]
+): readonly T[];
+
+export function splice<T>(
+  target: T[] | readonly T[],
+  start: number,
+  deleteCount?: number,
+  ...items: T[]
+): T[] | readonly T[] {
   if (deleteCount === 0 && items.length === 0) {
     return target;
   }

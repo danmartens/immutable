@@ -1,7 +1,17 @@
 export function map<T, U>(
   target: T[],
   updater: (item: T, index: number) => U,
-): U[] {
+): U[];
+
+export function map<T, U>(
+  target: readonly T[],
+  updater: (item: T, index: number) => U,
+): readonly U[];
+
+export function map<T, U>(
+  target: T[] | readonly T[],
+  updater: (item: T, index: number) => U,
+): U[] | readonly U[] {
   let modified = false;
 
   const result: U[] = [];
