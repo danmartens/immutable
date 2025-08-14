@@ -12,4 +12,5 @@ export { set } from './set';
 export { setIn } from './setIn';
 export { splice } from './splice';
 export { union } from './union';
+export { uniquePush } from './uniquePush';
 export { updateIn } from './updateIn';
