@@ -1,25 +1,22 @@
-type ImmutableRecord<T = unknown> = Readonly<Record<string, T>>;
-type ImmutableArray<T = unknown> = ReadonlyArray<T>;
-
-export function set<T extends ImmutableRecord, K extends keyof T>(
+export function set<T extends Record<string, unknown>, K extends keyof T>(
   target: T,
   key: K,
   value: T[K],
 ): T;
 
-export function set<T extends ImmutableArray, K extends keyof T>(
+export function set<T extends Array<unknown>, K extends keyof T>(
   target: T,
   key: K,
   value: T[K],
 ): T;
 
 export function set<
-  T extends ImmutableRecord | ImmutableArray,
+  T extends Record<string, unknown> | Array<unknown>,
   K extends keyof T,
 >(target: T, key: K, value: T[K]): T;
 
 export function set<
-  T extends ImmutableRecord | ImmutableArray,
+  T extends Record<string, unknown> | Array<unknown>,
   K extends keyof T,
 >(target: T, key: K, value: T[K]): T {
   if (target[key] === value) {

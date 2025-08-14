@@ -1,7 +1,7 @@
-export const removeKeys = <T extends Record<string, any>>(
+export function removeKeys<T extends Record<string, any>>(
   target: T,
   keys: Array<keyof T>,
-): T => {
+): T {
   if (!keys.some((key) => key in target)) {
     return target;
   }
@@ -9,4 +9,4 @@ export const removeKeys = <T extends Record<string, any>>(
   return Object.fromEntries(
     Object.entries(target).filter(([key]) => !keys.includes(key)),
   ) as T;
-};
+}

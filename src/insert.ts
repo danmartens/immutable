@@ -1,9 +1,5 @@
 import { splice } from './splice';
 
-export const insert = <T>(
-  target: ReadonlyArray<T>,
-  index: number,
-  value: T,
-): ReadonlyArray<T> => {
+export function insert<T>(target: T[], index: number, value: T): T[] {
   return splice(target, index, 0, value);
-};
+}
