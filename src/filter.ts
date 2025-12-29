@@ -1,8 +1,11 @@
-export function filter<T>(target: T[], predicate: (item: T) => boolean): T[];
+export function filter<T>(
+  target: T[],
+  predicate: (item: T, index: number) => boolean,
+): T[];
 
 export function filter<T>(
   target: readonly T[],
-  predicate: (item: T) => boolean,
+  predicate: (item: T, index: number) => boolean,
 ): readonly T[];
 
 /**
@@ -11,16 +14,16 @@ export function filter<T>(
  */
 export function filter<T>(
   target: T[] | readonly T[],
-  predicate: (item: T) => boolean,
+  predicate: (item: T, index: number) => boolean,
 ): T[] | readonly T[] {
   let modified = false;
 
   const result: Array<T> = [];
 
-  for (const item of target) {
-    const include = predicate(item);
+  for (let index = 0; index < target.length; index++) {
+    const item = target[index];
 
-    if (include) {
+    if (predicate(item, index)) {
       result.push(item);
     } else {
       modified = true;
