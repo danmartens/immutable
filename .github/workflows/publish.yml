@@ -29,5 +29,21 @@ jobs:
       - name: Build
         run: yarn turbo build
 
+      - name: Validate build outputs
+        run: |
+          set -euo pipefail
+
+          FILES=(
+            "dist/cjs/index.js"
+            "dist/esm/index.js"
+            "dist/types/index.d.ts"
+          )
+
+          for file in "${FILES[@]}"; do
+            if [ ! -f "$file" ]; then
+              echo "Expected build output missing: $file" >&2
+              exit 1
+            fi
+          done
       - name: Publish
         run: npm publish
