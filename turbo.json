@@ -1,0 +1,21 @@
+{
+  "$schema": "https://turborepo.com/schema.json",
+  "tasks": {
+    "types:check": {
+      "inputs": ["yarn.lock", "tsconfig.json", "src/**"],
+      "outputs": []
+    },
+    "lint": {
+      "inputs": ["yarn.lock", "eslint.config.mjs", "src/**"],
+      "outputs": []
+    },
+    "build": {
+      "dependsOn": ["types:check", "lint"],
+      "outputs": ["dist/**"]
+    },
+    "publish": {
+      "dependsOn": ["build"],
+      "interactive": true
+    }
+  }
+}
