@@ -2,20 +2,21 @@
   "$schema": "https://turborepo.com/schema.json",
   "tasks": {
     "types:check": {
-      "inputs": ["yarn.lock", "tsconfig.json", "src/**"],
-      "outputs": []
+      "inputs": ["yarn.lock", "tsconfig.json", "src/**"]
     },
     "lint": {
-      "inputs": ["yarn.lock", "eslint.config.mjs", "src/**"],
-      "outputs": []
+      "inputs": ["yarn.lock", "eslint.config.mjs", "src/**"]
+    },
+    "test": {
+      "inputs": ["yarn.lock", "jest.config.mjs", "babel.config.js", "src/**"]
     },
     "build": {
-      "dependsOn": ["types:check", "lint"],
+      "dependsOn": ["types:check", "lint", "test"],
       "outputs": ["dist/**"]
     },
     "publish": {
       "dependsOn": ["build"],
-      "interactive": true
+      "env": ["NODE_AUTH_TOKEN"]
     }
   }
 }

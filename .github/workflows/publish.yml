@@ -26,19 +26,6 @@ jobs:
       - name: Install Dependencies
         run: yarn install --immutable
 
-      - run: yarn types:check
-
-      - run: yarn test
-
-      - run: yarn prettier:check
-
-      - name: Build
-        run: |
-          yarn build
-          test -f "dist/cjs/index.js"
-          test -f "dist/esm/index.js"
-          test -f "dist/types/index.d.ts"
-
-      - run: npm publish --access public
+      - run: yarn turbo publish
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
