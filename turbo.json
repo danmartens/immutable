@@ -10,8 +10,11 @@
     "test": {
       "inputs": ["yarn.lock", "jest.config.mjs", "babel.config.js", "src/**"]
     },
+    "format:check": {
+      "inputs": ["yarn.lock", ".prettierrc", ".prettierignore", "src/**"]
+    },
     "build": {
-      "dependsOn": ["types:check", "lint", "test"],
+      "dependsOn": ["types:check", "lint", "test", "format:check"],
       "inputs": [
         "yarn.lock",
         "tsconfig.build.json",
@@ -19,10 +22,6 @@
         "src/**"
       ],
       "outputs": ["dist/**"]
-    },
-    "publish": {
-      "dependsOn": ["build"],
-      "env": ["NODE_AUTH_TOKEN"]
     }
   }
 }

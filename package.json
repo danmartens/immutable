@@ -23,11 +23,10 @@
   "scripts": {
     "test": "jest",
     "types:check": "tsc --noEmit",
-    "prettier:check": "prettier --check .",
-    "prettier:fix": "prettier --write .",
+    "format": "prettier --write .",
+    "format:check": "prettier --check .",
     "lint": "eslint .",
     "build": "rm -rf dist && rollup --config rollup.config.ts --configPlugin @rollup/plugin-typescript && tsc -p tsconfig.build.json",
-    "publish": "npm publish --access public --provenance",
     "prepare": "husky install"
   },
   "devDependencies": {
