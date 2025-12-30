@@ -1,26 +1,31 @@
 import { isObject } from './isObject';
 
-export function setIn<T extends Record<string, unknown>, K1 extends keyof T>(
+export type Target =
+  | Record<string, unknown>
+  | Array<unknown>
+  | ReadonlyArray<unknown>;
+
+export function setIn<T extends Target, K1 extends keyof T>(
   target: T,
   key1: K1,
   value: T[K1],
 ): T;
 
 export function setIn<
-  T extends Record<string, unknown>,
+  T extends Target,
   K1 extends keyof T,
   K2 extends keyof T[K1],
 >(target: T, key1: K1, key2: K2, value: T[K1][K2]): T;
 
 export function setIn<
-  T extends Record<string, unknown>,
+  T extends Target,
   K1 extends keyof T,
   K2 extends keyof T[K1],
   K3 extends keyof T[K1][K2],
 >(target: T, key1: K1, key2: K2, key3: K3, value: T[K1][K2][K3]): T;
 
 export function setIn<
-  T extends Record<string, unknown>,
+  T extends Target,
   K1 extends keyof T,
   K2 extends keyof T[K1],
   K3 extends keyof T[K1][K2],
@@ -35,7 +40,7 @@ export function setIn<
 ): T;
 
 export function setIn<
-  T extends Record<string, unknown>,
+  T extends Target,
   K1 extends keyof T,
   K2 extends keyof T[K1],
   K3 extends keyof T[K1][K2],
@@ -59,10 +64,7 @@ export function setIn<
       return target;
     }
 
-    return {
-      ...target,
-      [key1]: value,
-    };
+    return set(target, key1, value);
   }
 
   const record1 = target[key1];
@@ -78,13 +80,7 @@ export function setIn<
       return target;
     }
 
-    return {
-      ...target,
-      [key1]: {
-        ...record1,
-        [key2]: value,
-      },
-    };
+    return set(target, key1, set(record1, key2, value));
   }
 
   const record2 = record1[key2];
@@ -100,16 +96,7 @@ export function setIn<
       return target;
     }
 
-    return {
-      ...target,
-      [key1]: {
-        ...record1,
-        [key2]: {
-          ...record2,
-          [key3]: value,
-        },
-      },
-    };
+    return set(target, key1, set(record1, key2, set(record2, key3, value)));
   }
 
   const record3 = record2[key3];
@@ -123,19 +110,11 @@ export function setIn<
     return target;
   }
 
-  return {
-    ...target,
-    [key1]: {
-      ...record1,
-      [key2]: {
-        ...record2,
-        [key3]: {
-          ...record3,
-          [key4]: value,
-        },
-      },
-    },
-  };
+  return set(
+    target,
+    key1,
+    set(record1, key2, set(record2, key3, set(record3, key4, value))),
+  );
 }
 
 function assertObject(
@@ -154,5 +133,20 @@ function assertObject(
     throw new TypeError(
       'Target is not an object and therefore cannot be updated via setIn',
     );
+  }
+}
+
+function set<T extends Target>(target: T, key: keyof T, value: unknown): T {
+  if (Array.isArray(target)) {
+    const result = [...target];
+
+    result[key as number] = value;
+
+    return result as unknown as T;
+  } else {
+    return {
+      ...target,
+      [key]: value,
+    };
   }
 }
