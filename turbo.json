@@ -12,6 +12,12 @@
     },
     "build": {
       "dependsOn": ["types:check", "lint", "test"],
+      "inputs": [
+        "yarn.lock",
+        "tsconfig.build.json",
+        "rollup.config.ts",
+        "src/**"
+      ],
       "outputs": ["dist/**"]
     },
     "publish": {
