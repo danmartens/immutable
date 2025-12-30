@@ -1515,6 +1515,9 @@ __metadata:
     turbo: "npm:^2.7.2"
     typescript: "npm:^5.9.3"
     typescript-eslint: "npm:^8.51.0"
+  dependenciesMeta:
+    turbo:
+      built: true
   languageName: unknown
   linkType: soft
 
