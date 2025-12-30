@@ -6,13 +6,13 @@ on:
 
   workflow_dispatch:
 
+permissions:
+  id-token: write
+  contents: read
+
 jobs:
   build:
     runs-on: ubuntu-latest
-
-    permissions:
-      id-token: write
-      contents: read
 
     steps:
       - uses: actions/checkout@v6
@@ -26,6 +26,8 @@ jobs:
       - name: Install Dependencies
         run: yarn install --immutable
 
-      - run: yarn turbo publish
-        env:
-          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+      - name: Build
+        run: yarn turbo build
+
+      - name: Publish
+        run: npm publish

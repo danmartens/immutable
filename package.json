@@ -1,6 +1,8 @@
 {
   "name": "@danmartens/immutable",
-  "repository": "https://github.com/danmartens/immutable.git",
+  "repository": {
+    "url": "git+https://github.com/danmartens/immutable.git"
+  },
   "version": "0.3.1",
   "license": "MIT",
   "main": "./dist/cjs/index.js",
